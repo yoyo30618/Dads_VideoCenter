@@ -16,6 +16,8 @@
 			<div class="col-md-12">
 				<div class="f-sicon">
 					<ul>
+					<a href='Upload.php'>上傳影片</a>
+					<a href='contactlist.php'>留言檢視</a>
 					</ul>
 				</div>
 				<div class="copyright">

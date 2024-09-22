@@ -75,7 +75,7 @@
 								if(isset($_GET['video'])){
 									$videoFile = findVideoFile($_GET['video']);
 									if($videoFile != null)
-										echo "<video style='width:100%;widht100%;' src='".$videoFile."' controls></video>";
+										echo "<video style='height:400px;' src='".$videoFile."' controls></video>";
 									else
 										echo "未找到影片檔案";
 								}

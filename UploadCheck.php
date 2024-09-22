@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // 獲取並清理標題
-    $title = preg_replace('/[^A-Za-z0-9\-]/', '_', $_POST['title']);
+    $title = $_POST['title'];
 
     // 獲取檔案副檔名
     $file_extension = pathinfo($_FILES["video-file"]["name"], PATHINFO_EXTENSION);
