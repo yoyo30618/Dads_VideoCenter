@@ -16,6 +16,23 @@ function getVideoFiles() {
     }
     return $videoFiles;
 }
+function getContactFiles() {
+    $directory = 'UploadFiles/ContactUs/'; // 資料夾名稱
+    $ContactFiles = [];
+    $allowedExtensions = ['txt']; // 允許的影片副檔名
+
+    if (is_dir($directory)) {
+        $files = scandir($directory);
+        foreach ($files as $file) {
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+            if (in_array(strtolower($extension), $allowedExtensions)) {
+                $filenameWithoutExtension = pathinfo($file, PATHINFO_FILENAME);
+                $ContactFiles[] = $filenameWithoutExtension;
+            }
+        }
+    }
+    return $ContactFiles;
+}
 
 function findVideoFile($baseName) {
     $allowedExtensions = ['mp4', 'avi', 'mov', 'wmv', 'webm', 'ogg']; 
@@ -42,6 +59,20 @@ function findThumbFile($baseName) {
 function getVideoDetails($videoFile) {
     $baseName = pathinfo($videoFile, PATHINFO_FILENAME);
     $detailFile = 'UploadFiles/Detail/' . $baseName . '.txt';
+    
+    $details = [];
+    if (file_exists($detailFile)) {
+        $lines = file($detailFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            $details[] = $line;
+        }
+    }
+    return $details;
+}
+
+function getContactDetails($ContactFile) {
+    $baseName = pathinfo($ContactFile, PATHINFO_FILENAME);
+    $detailFile = 'UploadFiles/ContactUs/' . $baseName . '.txt';
     
     $details = [];
     if (file_exists($detailFile)) {
